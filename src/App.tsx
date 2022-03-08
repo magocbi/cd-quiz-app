@@ -4,7 +4,7 @@ import HighscoresButton from './components/HighscoresButton/HighscoresButton';
 import Timer from './components/Timer/Timer';
 import GlobalStyle from './GlobalStyle';
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className='App'>
       <GlobalStyle />
@@ -17,7 +17,6 @@ function App() {
           setTimeLeft={() => {}}
         />
       </Header>
-      Verdana
     </div>
   );
 }
