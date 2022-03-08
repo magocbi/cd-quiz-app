@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button';
 
 type Props = {
   startQuiz: () => void;
@@ -15,7 +16,7 @@ const Start: React.FC<Props> = ({ startQuiz }) => {
         Keep in mind that incorrect answers will penalize your score/time by ten
         seconds!
       </p>
-      <button onClick={startQuiz}>Start Quiz</button>
+      <Button onClick={startQuiz}>Start Quiz</Button>
     </div>
   );
 };

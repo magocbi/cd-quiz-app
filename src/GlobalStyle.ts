@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     --clr-primary: #218380;
     --clr-white: #ffffff;
     --clr-black: #000000;
-    --ff-sans-serif: 'Verdana', sans-serif;
+    --ff-sans-serif: Verdana, sans-serif;
     --fs-400: 1rem;
     --fs-600: 1.5rem;
   }

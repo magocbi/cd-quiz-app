@@ -13,3 +13,7 @@ export const Content = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 `;
+
+export const Title = styled.h1`
+  font-size: var(--fs-600);
+`;
