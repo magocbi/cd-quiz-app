@@ -1,4 +1,5 @@
 import React from 'react';
+import { Content, Wrapper } from './Card.styles';
 
 type Props = {
   title: string;
@@ -6,10 +7,10 @@ type Props = {
 
 const Card: React.FC<Props> = ({ title, children }) => {
   return (
-    <div>
+    <Wrapper>
       <h1>{title}</h1>
-      {children}
-    </div>
+      <Content>{children}</Content>
+    </Wrapper>
   );
 };
 

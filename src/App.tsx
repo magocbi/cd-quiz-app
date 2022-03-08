@@ -1,4 +1,6 @@
 import React from 'react';
+import { Main } from './App.styles';
+import Card from './components/Card/Card';
 import Header from './components/Header/Header';
 import HighscoresButton from './components/HighscoresButton/HighscoresButton';
 import Timer from './components/Timer/Timer';
@@ -6,7 +8,7 @@ import GlobalStyle from './GlobalStyle';
 
 function App(): JSX.Element {
   return (
-    <div className='App'>
+    <div>
       <GlobalStyle />
       <Header>
         <HighscoresButton />
@@ -17,6 +19,9 @@ function App(): JSX.Element {
           setTimeLeft={() => {}}
         />
       </Header>
+      <Main>
+        <Card title={'Coding Quiz Challenge'}></Card>
+      </Main>
     </div>
   );
 }
