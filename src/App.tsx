@@ -3,6 +3,7 @@ import { Main } from './App.styles';
 import Card from './components/Card/Card';
 import Header from './components/Header/Header';
 import HighscoresButton from './components/HighscoresButton/HighscoresButton';
+import Options from './components/Options/Options';
 import Start from './components/Start/Start';
 import Timer from './components/Timer/Timer';
 import GlobalStyle from './GlobalStyle';
@@ -23,6 +24,7 @@ function App(): JSX.Element {
       <Main>
         <Card title={'Coding Quiz Challenge'}>
           <Start startQuiz={() => {}} />
+          <Options options={['option 1', 'option 2', 'option 3', 'option 4']} />
         </Card>
       </Main>
     </div>
