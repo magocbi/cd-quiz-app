@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button';
+import { Form } from './Result.styles';
 
 type Props = {
   score: number;
@@ -20,8 +21,8 @@ const Result: React.FC<Props> = ({ score, submitScore }) => {
 
   return (
     <div>
-      <h1>All done!</h1>;<p>Your final score is {score}.</p>
-      <form onSubmit={onSubmit}>
+      <p>Your final score is {score}.</p>
+      <Form onSubmit={onSubmit}>
         <label htmlFor='score-initials'>Enter initials:</label>
         <input
           type='text'
@@ -32,7 +33,7 @@ const Result: React.FC<Props> = ({ score, submitScore }) => {
           onChange={onChange}
         />
         <Button type='submit'>Submit</Button>
-      </form>
+      </Form>
     </div>
   );
 };

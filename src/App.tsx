@@ -4,6 +4,7 @@ import Card from './components/Card/Card';
 import Header from './components/Header/Header';
 import HighscoresButton from './components/HighscoresButton/HighscoresButton';
 import Options from './components/Options/Options';
+import Result from './components/Result/Result';
 import Start from './components/Start/Start';
 import Timer from './components/Timer/Timer';
 import GlobalStyle from './GlobalStyle';
@@ -33,6 +34,7 @@ function App(): JSX.Element {
             ]}
             checkAnswer={() => {}}
           />
+          <Result score={0} submitScore={() => {}} />
         </Card>
       </Main>
     </div>

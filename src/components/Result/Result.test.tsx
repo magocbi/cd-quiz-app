@@ -5,9 +5,6 @@ import Result from './Result';
 test('renders initial conditions', () => {
   render(<Result score={0} submitScore={jest.fn()} />);
 
-  const title = screen.getByRole('heading', { name: /all done/i });
-  expect(title).toBeInTheDocument();
-
   const score = screen.getByText(/Your final score is 0./i);
   expect(score).toBeInTheDocument();
 
