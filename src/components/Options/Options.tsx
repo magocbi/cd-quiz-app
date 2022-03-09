@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../Button';
+import { List, ListItem } from './Options.styles';
 
 type Props = {
   options: string[];
@@ -8,12 +9,12 @@ type Props = {
 
 const Options: React.FC<Props> = ({ options, checkAnswer }) => {
   const optionsElems: JSX.Element[] = options.map((option, index) => (
-    <li key={index}>
+    <ListItem key={index}>
       <Button onClick={() => checkAnswer(index)}>{option}</Button>
-    </li>
+    </ListItem>
   ));
 
-  return <ul>{optionsElems}</ul>;
+  return <List>{optionsElems}</List>;
 };
 
 export default Options;

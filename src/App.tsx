@@ -24,7 +24,15 @@ function App(): JSX.Element {
       <Main>
         <Card title={'Coding Quiz Challenge'}>
           <Start startQuiz={() => {}} />
-          <Options options={['option 1', 'option 2', 'option 3', 'option 4']} />
+          <Options
+            options={[
+              '1. option 1',
+              '2. option 2',
+              '3. option 3',
+              '4. option 4',
+            ]}
+            checkAnswer={() => {}}
+          />
         </Card>
       </Main>
     </div>
