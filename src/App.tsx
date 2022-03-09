@@ -2,6 +2,7 @@ import React from 'react';
 import { Main } from './App.styles';
 import Card from './components/Card/Card';
 import Header from './components/Header/Header';
+import Highscores from './components/Highscores/Highscores';
 import HighscoresButton from './components/HighscoresButton/HighscoresButton';
 import Options from './components/Options/Options';
 import Result from './components/Result/Result';
@@ -35,6 +36,7 @@ function App(): JSX.Element {
             checkAnswer={() => {}}
           />
           <Result score={0} submitScore={() => {}} />
+          <Highscores />
         </Card>
       </Main>
     </div>
