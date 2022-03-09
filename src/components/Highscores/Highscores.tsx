@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Button from '../Button';
+import { ControlContainer } from './Highscores.styles';
 
 export type HighscoreEntry = {
   score: number;
@@ -23,10 +25,10 @@ const Highscores: React.FC = () => {
           </li>
         ))}
       </ol>
-      <div>
-        <button>Go Back</button>
-        <button onClick={() => setHighscores([])}>Clear Highscores</button>
-      </div>
+      <ControlContainer>
+        <Button>Go Back</Button>
+        <Button onClick={() => setHighscores([])}>Clear Highscores</Button>
+      </ControlContainer>
     </div>
   );
 };
