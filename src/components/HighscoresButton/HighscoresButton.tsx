@@ -1,11 +1,13 @@
 import React from 'react';
 import { TransparentButton } from './HighscoresButton.styles';
 
-type Props = {};
+type Props = {
+  showHighscores: () => void;
+};
 
-const HighscoresButton: React.FC<Props> = (props: Props) => {
+const HighscoresButton: React.FC<Props> = ({ showHighscores }) => {
   return (
-    <TransparentButton>
+    <TransparentButton onClick={showHighscores}>
       View Highscores<i className='fas fa-hand-point-left fa-lg'></i>
     </TransparentButton>
   );

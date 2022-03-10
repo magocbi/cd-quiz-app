@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TimerSpan } from './Timer.styles';
 
 type Props = {
@@ -15,6 +15,7 @@ const Timer: React.FC<Props> = ({
   setTimeLeft,
 }) => {
   const [timer, setTimer] = useState(50);
+  let intervalId = useRef<undefined | number>(undefined);
 
   const calculateTimeLeft = (timeLeft: number, deductions: number): number => {
     const timePerDeduction: number = 10;
@@ -22,22 +23,24 @@ const Timer: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    let intervalId: NodeJS.Timer;
     if (gameStarted) {
-      intervalId = setInterval(() => {
+      intervalId.current = window.setInterval(() => {
         setTimer((state) => state - 1);
       }, 1000);
+    } else {
+      window.clearInterval(intervalId.current);
     }
     return () => {
-      clearInterval(intervalId);
+      window.clearInterval(intervalId.current);
     };
   }, [gameStarted]);
 
   useEffect(() => {
-    if (calculateTimeLeft(timer, incorrectNumber) <= 0) {
+    if (calculateTimeLeft(timer, incorrectNumber) <= 0 && gameStarted) {
+      window.clearInterval(intervalId.current);
       setGameOver(true);
     }
-  }, [incorrectNumber, setGameOver, timer]);
+  }, [incorrectNumber, setGameOver, timer, gameStarted]);
 
   return (
     <div role='timer'>

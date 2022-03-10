@@ -13,7 +13,17 @@ beforeAll(() => {
 });
 
 test('renders go back button and clear highschores button', () => {
-  render(<Highscores />);
+  render(
+    <Highscores
+      highscores={[
+        { score: 4, initials: 'NM' },
+        { score: 6, initials: 'CD' },
+        { score: 7, initials: 'FG' },
+        { score: 1, initials: 'PE' },
+      ]}
+      setHighscores={jest.fn()}
+    />
+  );
 
   const goBackButton = screen.getByRole('button', { name: /go back/i });
   expect(goBackButton).toBeInTheDocument();
@@ -25,19 +35,39 @@ test('renders go back button and clear highschores button', () => {
 });
 
 test('render highscores from localStorage', () => {
-  render(<Highscores />);
+  render(
+    <Highscores
+      highscores={[
+        { score: 4, initials: 'NM' },
+        { score: 6, initials: 'CD' },
+        { score: 7, initials: 'FG' },
+        { score: 1, initials: 'PE' },
+      ]}
+      setHighscores={jest.fn()}
+    />
+  );
 
   const scoresItems = screen.getAllByRole('listitem');
   const scoresText = scoresItems.map((score) => score.textContent);
   expect(scoresText).toEqual(['NM - 4', 'CD - 6', 'FG - 7', 'PE - 1']);
 });
 
-test('clears highscores if clear highscores button is clicked', () => {
-  render(<Highscores />);
+test('calls to clear highscores button is clicked', () => {
+  const mockSetHighscores = jest.fn();
+  render(
+    <Highscores
+      highscores={[
+        { score: 4, initials: 'NM' },
+        { score: 6, initials: 'CD' },
+        { score: 7, initials: 'FG' },
+        { score: 1, initials: 'PE' },
+      ]}
+      setHighscores={mockSetHighscores}
+    />
+  );
   const clearHighscoresButton = screen.getByRole('button', {
     name: /clear highscores/i,
   });
   userEvent.click(clearHighscoresButton);
-  const scoresItems = screen.queryByRole('listitem');
-  expect(scoresItems).not.toBeInTheDocument();
+  expect(mockSetHighscores).toBeCalledWith([]);
 });
