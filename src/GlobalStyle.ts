@@ -1,14 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 // font
-import Verdana from './assets/fa-solid-900.woff2';
 
 const GlobalStyle = createGlobalStyle`
 
-  @font-face {
-    font-family: Verdana;
-    src: url(${Verdana}) format('woff2');
-    display: swap;
-  }
 
   :root {
     --clr-primary: #218380;
