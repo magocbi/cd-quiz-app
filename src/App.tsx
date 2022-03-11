@@ -10,6 +10,7 @@ import Start from './components/Start/Start';
 import Timer from './components/Timer/Timer';
 import GlobalStyle from './GlobalStyle';
 import { useHighscores } from './hooks/useHighscores';
+import { useQuiz } from './hooks/useQuiz';
 import { questions } from './questions';
 
 const titles = {
@@ -25,23 +26,25 @@ const answerStatus = {
   incorrect: 'Incorrect!',
 };
 
-type AnswerStatusKey = keyof typeof answerStatus;
+export type AnswerStatusKey = keyof typeof answerStatus;
 
 function App(): JSX.Element {
   const [quizPhase, setQuizPhase] = useState<TitleKey | 'questions'>('start');
-  const [questionIndex, setQuestionIndex] = useState<number>(0);
   const [gameStarted, setGameStarted] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
   const [highscores, setHighscores] = useHighscores();
-  const [questionStatus, setQuestionStatus] = useState<AnswerStatusKey | null>(
-    null
-  );
-
-  const [incorrectNumber, setIncorrectNumber] = useState<number>(0);
+  const [
+    question,
+    questionStatus,
+    incorrectNumber,
+    score,
+    checkAnswer,
+    reset,
+    isFinished,
+  ] = useQuiz();
 
   const getTitle = (): string => {
     if (titles.hasOwnProperty(quizPhase)) return titles[quizPhase as TitleKey];
-    return questions[questionIndex].questionText;
+    return question.questionText;
   };
 
   const startQuiz = (): void => {
@@ -51,11 +54,8 @@ function App(): JSX.Element {
 
   const resetQuiz = (): void => {
     setQuizPhase('start');
-    setScore(0);
-    setQuestionIndex(0);
-    setQuestionStatus(null);
+    reset();
     setGameStarted(false);
-    setIncorrectNumber(0);
   };
 
   const endQuiz = (): void => {
@@ -76,26 +76,9 @@ function App(): JSX.Element {
     resetQuiz();
   };
 
-  const checkAnswer = (index: number): void => {
-    if (
-      questions[questionIndex].options[index] ===
-      questions[questionIndex].answer
-    ) {
-      setQuestionStatus('correct');
-      setScore((prev) => prev + 1);
-      if (questionIndex >= questions.length - 1) endQuiz();
-      else setQuestionIndex((prev) => prev + 1);
-    } else {
-      setQuestionStatus('incorrect');
-      setIncorrectNumber((prev) => prev + 1);
-    }
-  };
-
   useEffect(() => {
-    if (questionIndex >= questions.length) {
-      endQuiz();
-    }
-  }, [questionIndex]);
+    if (isFinished) endQuiz();
+  }, [isFinished]);
 
   return (
     <div>
@@ -115,10 +98,7 @@ function App(): JSX.Element {
             <Start startQuiz={startQuiz} />
           ) : quizPhase === 'questions' ? (
             <>
-              <Options
-                checkAnswer={checkAnswer}
-                options={questions[questionIndex].options}
-              />
+              <Options checkAnswer={checkAnswer} options={question.options} />
               {questionStatus ? (
                 <>
                   <hr />
