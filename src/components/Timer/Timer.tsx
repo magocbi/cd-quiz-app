@@ -24,6 +24,7 @@ const Timer: React.FC<Props> = ({
 
   useEffect(() => {
     if (gameStarted) {
+      setTimer(50);
       intervalId.current = window.setInterval(() => {
         setTimer((state) => state - 1);
       }, 1000);

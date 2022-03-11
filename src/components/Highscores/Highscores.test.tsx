@@ -22,6 +22,7 @@ test('renders go back button and clear highschores button', () => {
         { score: 1, initials: 'PE' },
       ]}
       setHighscores={jest.fn()}
+      goBack={jest.fn()}
     />
   );
 
@@ -44,6 +45,7 @@ test('render highscores from localStorage', () => {
         { score: 1, initials: 'PE' },
       ]}
       setHighscores={jest.fn()}
+      goBack={jest.fn()}
     />
   );
 
@@ -63,6 +65,7 @@ test('calls to clear highscores button is clicked', () => {
         { score: 1, initials: 'PE' },
       ]}
       setHighscores={mockSetHighscores}
+      goBack={jest.fn()}
     />
   );
   const clearHighscoresButton = screen.getByRole('button', {
