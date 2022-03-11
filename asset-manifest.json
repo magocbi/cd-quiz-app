@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/static/js/main.bde52e43.js",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.eaaca05c863d4214ee12.woff2",
+    "index.html": "/index.html",
+    "main.bde52e43.js.map": "/static/js/main.bde52e43.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.bde52e43.js"
+  ]
+}
