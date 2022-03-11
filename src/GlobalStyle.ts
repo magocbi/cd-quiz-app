@@ -37,6 +37,11 @@ const GlobalStyle = createGlobalStyle`
     
   }
 
+  hr {
+    width: 100%;
+    color: hsla(0,0%,0%,.15)
+  }
+
 `;
 
 export default GlobalStyle;

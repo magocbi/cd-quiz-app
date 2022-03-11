@@ -120,7 +120,10 @@ function App(): JSX.Element {
                 options={questions[questionIndex].options}
               />
               {questionStatus ? (
-                <div role='status'>{answerStatus[questionStatus]} </div>
+                <>
+                  <hr />
+                  <div role='status'>{answerStatus[questionStatus]} </div>
+                </>
               ) : null}
             </>
           ) : quizPhase === 'score' ? (
