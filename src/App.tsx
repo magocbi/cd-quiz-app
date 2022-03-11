@@ -11,7 +11,6 @@ import Timer from './components/Timer/Timer';
 import GlobalStyle from './GlobalStyle';
 import { useHighscores } from './hooks/useHighscores';
 import { useQuiz } from './hooks/useQuiz';
-import { questions } from './questions';
 
 const titles = {
   start: 'Coding Quiz Challenge',
