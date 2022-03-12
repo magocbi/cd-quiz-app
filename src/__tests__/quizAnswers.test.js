@@ -34,7 +34,7 @@ jest.mock('../questions', () => ({
   ],
 }));
 
-beforeAll(() => {
+beforeEach(() => {
   const highscores = [
     { score: 4, initials: 'NM' },
     { score: 6, initials: 'CD' },
@@ -64,6 +64,8 @@ test('should show start quiz card by default', () => {
 });
 
 test('should show highscores if highscore button is clicked', () => {
+  window.localStorage.removeItem('highscores');
+
   render(<App />);
 
   const highscoreButton = screen.getByRole('button', {
@@ -73,6 +75,9 @@ test('should show highscores if highscore button is clicked', () => {
 
   const highscoreTitle = screen.getByRole('heading', { name: /Highscores/i });
   expect(highscoreTitle).toBeInTheDocument();
+
+  const highscores = screen.queryByRole('listitem');
+  expect(highscores).not.toBeInTheDocument();
 });
 
 test('showing highscores after game started should restart the the quiz', () => {
